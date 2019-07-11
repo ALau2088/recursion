@@ -5,6 +5,7 @@ describe('stringifyJSON', function() {
     stringifiableObjects.forEach(function(test) {
       var expected = JSON.stringify(test);
       var result = stringifyJSON(test);
+      console.log(result, expected)
       expect(result).to.equal(expected);
     });
 
