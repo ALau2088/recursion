@@ -11,13 +11,10 @@ var stringifyJSON = function(obj) {
       if (Object.prototype.toString.call(object) === '[object Object]'){
         // if has key
         if (Object.keys(object).length > 0){
-          console.log(Object.keys(object))
-
           var newObj = {}
           var objString = "{"
           // yes-recurse key
           for (var key in object){
-            console.log(key)
             if (key === 'functions' || key === 'undefined') {
               newObj['"' + key + '"'] = '{}'
               objString = '{}'
@@ -25,19 +22,11 @@ var stringifyJSON = function(obj) {
               newObj['"' + key + '"'] = object[key]
               objString = objString + '"' + key + '"' + ':' + json(newObj['"' + key + '"']) + ','
             }
-            
           }
-            //objString = objString + newObj['"' + key + '"'] + '"'
-          // for (var key in newObj){
-          //   objString = objString + key + ':"' + newObj[key] + '",'
-          //   console.log(objString)
-          // }
-          console.log(objString)
           objString = objString.substring(0, objString.length -1)
           objString = objString.replace(/:"true"/g, ':true')
           objString = objString.replace(/:"false"/g, ':false')
           objString = objString.replace(/:"null"/g, ':null')
-          console.log(objString)
           return objString + '}'
         } else {
           // no-empty object
@@ -70,7 +59,6 @@ var stringifyJSON = function(obj) {
 
         //Number
         if (Object.prototype.toString.call(object) === '[object Number]'){
-          console.log(object.toString())
           return object.toString();
         }
 
